@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@16.3.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.3.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/prop-types@15.6.0/prop-types.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+<body>
+    <style>
+        .box{
+            border: 1px solid #000;
+            height: 120px;
+            width: 120px;
+        }
+        .box--small{
+            height: 60px;
+            width: 60px;
+        }
+
+        .box--medium {
+            height: 150px;
+            width: 150px;
+        }
+
+        .box--large {
+            height: 200px;
+            width: 200px;
+        }
+
+    </style>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        var root = document.getElementById('root');
+
+        function Box({style, size, className = '', ...rest}) {
+
+            const sizeClassName = size ? `box--${size}` : '';
+            
+            return (
+                <div 
+                className = {`box ${className} ${sizeClassName}`}
+                style={{paddingLeft: 20, ...style}}
+                {...rest} 
+                />
+            )
+            
+        }
+        const element = (
+
+            <div>
+                <Box size='small' style={{backgroundColor: 'lightblue'}}>small box</Box>
+                <Box size='meduim' style={{backgroundColor: 'pink'}}>small box</Box>
+                <Box size='large' style={{backgroundColor: 'blue'}}>small box</Box>
+            </div>
+        )
+       
+        ReactDOM.render(
+        element
+        , root);
+    
+    </script>
+</body>
+</html>
